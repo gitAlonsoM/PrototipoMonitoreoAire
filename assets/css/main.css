@@ -1,0 +1,13 @@
+/* assets\css\main.css */
+/* main.css - Estilos globales del prototipo */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #eef2f7;
+  }
+  
+  .section-title {
+    color: #333;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 5px;
+  }
+  
