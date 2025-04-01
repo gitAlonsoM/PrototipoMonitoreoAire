@@ -1,0 +1,98 @@
+<!-- sprints\sprint2\hu1\hu1.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HU‑1: Panel en Tiempo Real</title>
+  <!-- Bootstrap CSS (CDN) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Estilos propios de la HU-1 -->
+  <link rel="stylesheet" href="hu1.css">
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="row">
+      <!-- Columna IZQUIERDA: Panel de indicadores y filtros -->
+      <div class="col-md-3 bg-white border-end py-3" id="panel-left">
+        
+        <!-- Filtros de ubicación -->
+        <h5 class="mb-3">Filtrar por Ubicación</h5>
+        <form class="mb-4" id="filter-form">
+          <div class="mb-2">
+            <label for="region" class="form-label">Región:</label>
+            <select class="form-select" id="region">
+              <option>Seleccionar Región</option>
+              <option>Región 1</option>
+              <option>Región 2</option>
+              <option>Región 3</option>
+            </select>
+          </div>
+          <div class="mb-2">
+            <label for="comuna" class="form-label">Comuna:</label>
+            <select class="form-select" id="comuna">
+              <option>Seleccionar Comuna</option>
+              <option>Comuna A</option>
+              <option>Comuna B</option>
+              <option>Comuna C</option>
+            </select>
+          </div>
+          <div class="mb-2">
+            <label for="estacion" class="form-label">Estación:</label>
+            <select class="form-select" id="estacion">
+              <option>Seleccionar Estación</option>
+              <option>Estación 1</option>
+              <option>Estación 2</option>
+              <option>Estación 3</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary btn-sm mt-2">Filtrar</button>
+        </form>
+
+        <!-- Panel de Indicadores -->
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title mb-3">Indicadores de Calidad del Aire</h5>
+            <div id="hu1-panel">
+              <!-- Seis contaminantes con actualización dinámica -->
+              <p>PM2.5: 35 µg/m³ (Últ. act. 17:04:25)</p>
+              <p>PM10: 50 µg/m³ (Últ. act. 17:04:25)</p>
+              <p>O₃: 20 ppb (Últ. act. 17:04:25)</p>
+              <p>NO₂: 15 ppb (Últ. act. 17:04:25)</p>
+              <p>SO₂: 10 ppb (Últ. act. 17:04:25)</p>
+              <p>CO: 0.5 ppm (Últ. act. 17:04:25)</p>
+            </div>
+            <button class="btn btn-outline-secondary btn-sm mt-3" id="export-pdf">Exportar a PDF</button>
+          </div>
+        </div>
+
+        <!-- Leyenda de Índice AQI -->
+        <div class="card shadow-sm mt-4">
+          <div class="card-body">
+            <h6 class="card-title mb-2">Leyenda AQI</h6>
+            <ul class="list-unstyled">
+              <li><span class="aqi-legend bg-success"></span> Bueno (0‑50)</li>
+              <li><span class="aqi-legend bg-warning"></span> Moderado (51‑100)</li>
+              <li><span class="aqi-legend bg-orange"></span> Dañino (101‑150)</li>
+              <li><span class="aqi-legend bg-danger"></span> Peligroso (151+)</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Columna DERECHA (opcional): Espacio para gráficos, detalles, etc. -->
+      <div class="col-md-9 py-3" id="content-right">
+        <div class="alert alert-info">
+          <strong>Sección en construcción:</strong> Aquí podrías mostrar gráficas, estadísticas detalladas u otras vistas relacionadas con la ubicación seleccionada.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS (CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Lógica de la HU-1 -->
+  <script src="hu1.js"></script>
+</body>
+</html>

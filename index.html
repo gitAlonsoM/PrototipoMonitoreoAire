@@ -1,34 +1,40 @@
 <!-- index.html -->
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Monitoreo de la Calidad del Aire - Dashboard</title>
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+  <!-- Bootstrap CSS (CDN) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- Estilos globales -->
   <link rel="stylesheet" href="assets/css/main.css">
+
   <style>
-    /* Estilos específicos para este prototipo */
     body {
-      padding-top: 70px;
+      padding-top: 70px; /* Deja espacio para la navbar fija */
     }
-    .sidebar {
-      background-color: #f8f9fa;
+    .navbar-brand {
+      font-weight: 600;
+    }
+    /* Columna izquierda (sidebar/panel) */
+    .left-panel {
+      background-color: #ffffff;
+      border-right: 1px solid #e0e0e0;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      min-height: 100vh;
       padding: 20px;
-      height: 100%;
     }
-    .nav-link {
-      color: #333;
+    /* Columna derecha (contenido principal) */
+    .main-content {
+      padding: 20px;
+      background-color: #f8f9fa;
+      min-height: 100vh;
     }
     .section-title {
-      margin-top: 30px;
-      margin-bottom: 20px;
-    }
-    .card {
-      margin-bottom: 20px;
+      margin-top: 20px;
+      margin-bottom: 15px;
+      font-weight: 600;
     }
   </style>
 </head>
@@ -41,7 +47,8 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <!-- Menú principal -->
+        <ul class="navbar-nav me-auto">
           <li class="nav-item">
             <a class="nav-link active" href="#">Dashboard</a>
           </li>
@@ -54,9 +61,9 @@
           <li class="nav-item">
             <a class="nav-link" href="#">Alertas</a>
           </li>
-          <!-- Otras opciones a definir en iteraciones futuras -->
         </ul>
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <!-- Menú de usuario -->
+        <ul class="navbar-nav ms-auto">
           <li class="nav-item">
             <a class="nav-link" href="#">Iniciar Sesión</a>
           </li>
@@ -68,108 +75,97 @@
     </div>
   </nav>
 
-  <!-- Contenedor principal del Dashboard -->
+  <!-- Contenedor principal -->
   <div class="container-fluid">
     <div class="row">
-      <!-- Sidebar lateral (opcional) -->
-      <nav class="col-md-2 d-none d-md-block sidebar">
-        <div class="position-sticky">
-          <ul class="nav flex-column">
-            <li class="nav-item">
-              <a class="nav-link" href="#panel-realtime">Panel en Tiempo Real</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#seccion-salud">Sección Salud</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#historial">Historial de Calidad del Aire</a>
-            </li>
-            <!-- Otros links para futuras funcionalidades -->
-          </ul>
+      <!-- Columna IZQUIERDA: Aquí colocamos directamente el contenido HU-1 -->
+      <div class="col-md-3 left-panel">
+        <h5 class="mb-3">Panel en Tiempo Real (HU‑1)</h5>
+
+        <!-- Aquí incrustamos el contenido del panel HU-1 -->
+        <!-- Opción A: Copiar/pegar el HTML del HU‑1 directamente -->
+        <!-- Opción B: Incluirlo con un <object> o <iframe>, pero ya no en la sección principal -->
+
+        <!-- Opción A: Copiar/pegar HU-1 -->
+        <div id="hu1-panel-container">
+          <!-- El "cuerpo" del HU-1 se va a renderizar dinámicamente desde un archivo JS externo 
+               o con el script inline. -->
+          <div class="card shadow-sm mb-3">
+            <div class="card-body">
+              <h6 class="card-title">Indicadores de Calidad del Aire</h6>
+              <div id="hu1-panel">
+                <!-- Aquí se rellenarán los contaminantes -->
+              </div>
+              <button class="btn btn-outline-secondary btn-sm mt-3 w-100" id="export-pdf">Exportar a PDF</button>
+            </div>
+          </div>
+
+          <!-- Filtros de ubicación (opcional) -->
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <h6 class="card-title">Filtrar por Ubicación</h6>
+              <form id="filter-form">
+                <div class="mb-2">
+                  <label for="region" class="form-label">Región</label>
+                  <select class="form-select" id="region">
+                    <option>Seleccionar Región</option>
+                    <option>Región 1</option>
+                    <option>Región 2</option>
+                    <option>Región 3</option>
+                  </select>
+                </div>
+                <div class="mb-2">
+                  <label for="comuna" class="form-label">Comuna</label>
+                  <select class="form-select" id="comuna">
+                    <option>Seleccionar Comuna</option>
+                    <option>Comuna A</option>
+                    <option>Comuna B</option>
+                    <option>Comuna C</option>
+                  </select>
+                </div>
+                <div class="mb-2">
+                  <label for="estacion" class="form-label">Estación</label>
+                  <select class="form-select" id="estacion">
+                    <option>Seleccionar Estación</option>
+                    <option>Estación 1</option>
+                    <option>Estación 2</option>
+                    <option>Estación 3</option>
+                  </select>
+                </div>
+                <button type="submit" class="btn btn-primary btn-sm mt-2 w-100">Filtrar</button>
+              </form>
+            </div>
+          </div>
+
+          <!-- Leyenda de AQI -->
+          <div class="card shadow-sm mt-4">
+            <div class="card-body">
+              <h6 class="card-title mb-2">Leyenda AQI</h6>
+              <ul class="list-unstyled">
+                <li><span class="aqi-legend bg-success"></span> Bueno (0‑50)</li>
+                <li><span class="aqi-legend bg-warning"></span> Moderado (51‑100)</li>
+                <li><span class="aqi-legend bg-orange"></span> Dañino (101‑150)</li>
+                <li><span class="aqi-legend bg-danger"></span> Peligroso (151+)</li>
+              </ul>
+            </div>
+          </div>
         </div>
-      </nav>
+        <!-- Fin de Panel HU-1 -->
+      </div>
 
-      <!-- Contenido principal -->
-      <main class="col-md-10 ms-sm-auto col-lg-10 px-md-4">
-        <!-- Sección HU-1: Panel en tiempo real -->
-        <section id="panel-realtime">
-          <h2 class="section-title">Panel en Tiempo Real de Indicadores de Calidad del Aire (HU-1)</h2>
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Indicadores Principales</h5>
-              <!-- Simulación de gráfica o panel (datos inventados) -->
-              <div id="realtime-panel">
-                <p>PM2.5: 35 µg/m³</p>
-                <p>PM10: 50 µg/m³</p>
-                <p>O₃: 20 ppb</p>
-                <p>NO₂: 15 ppb</p>
-                <p>SO₂: 10 ppb</p>
-                <p>CO: 0.5 ppm</p>
-                <p><strong>Última actualización:</strong> 17/04/2025 10:30 AM</p>
-              </div>
-              <!-- Botón para simular exportación a PDF -->
-              <button class="btn btn-sm btn-outline-secondary mt-2">Exportar a PDF</button>
-            </div>
-          </div>
-        </section>
-
-        <!-- Sección HU-12: Información sobre salud y calidad del aire -->
-        <section id="seccion-salud">
-          <h2 class="section-title">Información sobre Salud y Calidad del Aire (HU-12)</h2>
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Impacto en la Salud</h5>
-              <p>
-                La exposición a altos niveles de contaminantes puede afectar gravemente la salud, especialmente en grupos vulnerables como niños y ancianos.
-              </p>
-              <p>
-                Se recomienda evitar actividades al aire libre durante picos de contaminación y utilizar mascarillas en zonas de alta exposición.
-              </p>
-              <!-- Simulación de test interactivo -->
-              <button class="btn btn-sm btn-primary">Realizar Test de Riesgo</button>
-            </div>
-          </div>
-        </section>
-
-        <!-- Sección HU-14: Visualización del historial de la calidad del aire -->
-        <section id="historial">
-          <h2 class="section-title">Historial de Calidad del Aire (HU-14)</h2>
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Evolución Histórica</h5>
-              <!-- Simulación de gráfica del historial (datos inventados) -->
-              <div id="historical-chart">
-                <p>Gráfica interactiva con datos históricos se mostrará aquí.</p>
-              </div>
-              <!-- Botón para exportar historial -->
-              <button class="btn btn-sm btn-outline-secondary mt-2">Descargar Historial (CSV/Excel)</button>
-            </div>
-          </div>
-        </section>
-      </main>
+      <!-- Columna DERECHA: Contenido principal, gráficas, etc. -->
+      <div class="col-md-9 main-content">
+        <h2 class="section-title">Sección Central</h2>
+        <div class="alert alert-info">
+          Aquí podrías mostrar gráficas, estadísticas detalladas u otras vistas relacionadas con la ubicación seleccionada.
+        </div>
+      </div>
     </div>
   </div>
 
-  <!-- Bootstrap JS y archivo de funciones globales -->
-  <script src="assets/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/js/main.js"></script>
-  <script>
-    // Código JS simple para simular actualizaciones en el panel en tiempo real
-    document.addEventListener("DOMContentLoaded", function() {
-      // Ejemplo: Actualización de datos (simulados)
-      setInterval(function() {
-        // Aquí se actualizarían los valores de forma dinámica
-        document.querySelector("#realtime-panel").innerHTML = `
-          <p>PM2.5: ${Math.floor(Math.random()*50)} µg/m³</p>
-          <p>PM10: ${Math.floor(Math.random()*70)} µg/m³</p>
-          <p>O₃: ${Math.floor(Math.random()*30)} ppb</p>
-          <p>NO₂: ${Math.floor(Math.random()*25)} ppb</p>
-          <p>SO₂: ${Math.floor(Math.random()*20)} ppb</p>
-          <p>CO: ${ (Math.random()*1).toFixed(2) } ppm</p>
-          <p><strong>Última actualización:</strong> ${new Date().toLocaleTimeString()}</p>
-        `;
-      }, 5000); // Actualización cada 5 segundos para simular real time (en prototipo)
-    });
-  </script>
+  <!-- Bootstrap JS (CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Script HU-1 -->
+  <script src="sprints/sprint2/hu1/hu1.js"></script>
 </body>
 </html>

@@ -1,13 +1,23 @@
 /* assets\css\main.css */
 /* main.css - Estilos globales del prototipo */
+/* main.css - Estilos globales del prototipo */
+/* main.css - Estilos globales del prototipo */
+/* main.css */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #eef2f7;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f9;
   }
   
-  .section-title {
-    color: #333;
-    border-bottom: 2px solid #ccc;
-    padding-bottom: 5px;
+  /* Leyenda AQI */
+  .aqi-legend {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+    border-radius: 3px;
+    vertical-align: middle;
+  }
+  .bg-orange {
+    background-color: #fd7e14 !important; /* color naranja */
   }
   

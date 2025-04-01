@@ -1,0 +1,35 @@
+/* sprints\sprint2\hu1\hu1.css*/
+/* hu1.css */
+/* hu1.css */
+/* hu1.css */
+
+/* Ajusta el panel de la izquierda */
+#panel-left {
+    box-shadow: inset -1px 0 0 rgba(0,0,0,0.1);
+  }
+  
+  /* Contaminantes */
+  #hu1-panel p {
+    margin: 0 0 8px 0;
+    font-size: 0.95rem;
+    line-height: 1.4;
+  }
+  
+  /* Botón exportar */
+  #export-pdf {
+    width: 100%;
+  }
+  
+  /* Leyenda de AQI */
+  .aqi-legend {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+    border-radius: 3px;
+    vertical-align: middle;
+  }
+  .bg-orange {
+    background-color: #fd7e14 !important; /* Color naranja */
+  }
+  
