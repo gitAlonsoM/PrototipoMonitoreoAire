@@ -1,0 +1,38 @@
+/* hu12.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+  }
+  
+  h1, h2 {
+    color: #0056b3;
+  }
+  
+  .container {
+    max-width: 800px;
+  }
+  
+  section {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+  
+  ul {
+    padding-left: 20px;
+  }
+  
+  button {
+    width: 100%;
+  }
+  
+  #test-result {
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  
