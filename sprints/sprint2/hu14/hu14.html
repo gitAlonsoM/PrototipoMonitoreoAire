@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historial de Calidad del Aire</title>
+    <link rel="stylesheet" href="hu14.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>Historial de Calidad del Aire</h1>
+    <div class="filtros">
+        <label for="fechaInicio">Fecha de Inicio:</label>
+        <input type="date" id="fechaInicio">
+        
+        <label for="fechaFin">Fecha de Fin:</label>
+        <input type="date" id="fechaFin">
+
+        <label for="contaminante">Contaminante:</label>
+        <select id="contaminante">
+            <option value="pm25">PM2.5</option>
+            <option value="pm10">PM10</option>
+            <option value="co">CO</option>
+            <option value="no2">NO2</option>
+            <option value="o3">O3</option>
+        </select>
+
+        <button onclick="actualizarGrafico()">Actualizar</button>
+        <button onclick="descargarCSV()">Descargar CSV</button>
+    </div>
+    
+    <canvas id="graficoCalidadAire"></canvas>
+
+    <script src="hu14.js"></script>
+</body>
+</html>
