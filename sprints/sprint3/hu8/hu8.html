@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Generar Reportes de Calidad del Aire</title>
+    <link rel="stylesheet" href="hu8.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</head>
+<body>
+    <h1>Reporte de Calidad del Aire</h1>
+    
+    <div class="formulario">
+        <label for="fechaInicio">Desde:</label>
+        <input type="date" id="fechaInicio">
+        
+        <label for="fechaFin">Hasta:</label>
+        <input type="date" id="fechaFin">
+
+        <label for="ubicacion">Ubicación:</label>
+        <select id="ubicacion">
+            <option value="santiago">Santiago</option>
+            <option value="valparaiso">Valparaíso</option>
+            <option value="concepcion">Concepción</option>
+        </select>
+
+        <button onclick="generarReporte()">Generar Reporte</button>
+        <button onclick="descargarExcel()">Descargar Excel</button>
+    </div>
+
+    <table id="tablaReporte">
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Ubicación</th>
+                <th>PM2.5</th>
+                <th>PM10</th>
+                <th>NO₂</th>
+                <th>O₃</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Datos se llenan dinámicamente -->
+        </tbody>
+    </table>
+
+    <script src="hu8.js"></script>
+</body>
+</html>
