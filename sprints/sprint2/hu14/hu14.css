@@ -1,27 +1,42 @@
+/* Estilos generales */
 body {
     font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin-bottom: 40px;
+  }
+  
+  /* Container principal */
+  .container {
+    margin-top: 100px;
+  }
+  
+  /* Títulos */
+  h1 {
+    margin-top: 20px;
+    color: #333;
     text-align: center;
-    margin: 20px;
-}
-
-.filtros {
+  }
+  
+  /* Sección de filtros */
+  .filtros {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 15px;
+    box-shadow: 0px 2px 4px rgba(0,0,0,0.1);
     margin-bottom: 20px;
-}
-
-button {
-    margin: 10px;
-    padding: 8px 15px;
-    border: none;
-    background-color: #007BFF;
-    color: white;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #0056b3;
-}
-
-canvas {
-    max-width: 80%;
+  }
+  
+  /* Canvas del gráfico (HU-3) */
+  canvas {
+    display: block;
     margin: auto;
-}
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  }
+  
+  /* Panel de estadísticas generado dinámicamente */
+  #statsContainer .stat-card {
+    margin-bottom: 15px;
+  }
+  

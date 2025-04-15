@@ -61,3 +61,35 @@ Mode                 LastWriteTime         Length Name
 
 
 PS C:\Users\alonm\Desktop\MonitoreoAire\sprints\sprint2\hu1> 
+
+
+PS C:\Users\alonm\Desktop\MonitoreoAire> cd sprints
+PS C:\Users\alonm\Desktop\MonitoreoAire\sprints> cd sprint3
+PS C:\Users\alonm\Desktop\MonitoreoAire\sprints\sprint3> dir
+
+
+    Directorio: C:\Users\alonm\Desktop\MonitoreoAire\sprints\sprint3
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----        15-04-2025     15:27                hu3
+d-----        15-04-2025     15:21                hu8
+
+
+PS C:\Users\alonm\Desktop\MonitoreoAire\sprints\sprint3> 
+
+PS C:\Users\alonm\Desktop\MonitoreoAire\sprints\sprint3\hu3> dir
+
+
+    Directorio: C:\Users\alonm\Desktop\MonitoreoAire\sprints\sprint3\hu3
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        15-04-2025     15:27             33 hu3.css
+-a----        15-04-2025     15:27             37 hu3.html
+-a----        15-04-2025     15:27             38 hu3.js
+
+
+PS C:\Users\alonm\Desktop\MonitoreoAire\sprints\sprint3\hu3> 
