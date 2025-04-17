@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HU-07: Seguridad para Actividades al Aire Libre</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="hu07.css" />
+</head>
+<body>
+  <!-- Dashboard superior -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">MonitoreoAire</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarContent">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item"><a class="nav-link active" href="#">Dashboard</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Reportes</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Historial</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Alertas</a></li>
+        </ul>
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#">Iniciar Sesión</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Registrarse</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Contenido -->
+  <div class="container mt-5 pt-5">
+    <h1 class="text-center mb-4">¿Es Seguro Realizar Actividades al Aire Libre?</h1>
+
+    <!-- Selector de ubicación -->
+    <section class="mb-4 p-3 bg-light border rounded">
+      <h2>Selecciona tu ubicación</h2>
+      <form id="location-form" class="row g-2">
+        <div class="col-md-6">
+          <input type="text" id="zipcode" class="form-control" placeholder="Código postal o ciudad" required />
+        </div>
+        <div class="col-md-4">
+          <button type="submit" class="btn btn-primary w-100">Buscar</button>
+        </div>
+        <div class="col-md-2">
+          <button type="button" class="btn btn-secondary w-100" id="geoBtn">Usar mi ubicación</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Información de calidad del aire -->
+    <section id="air-info" class="p-3 bg-light border rounded d-none">
+      <h2 class="mb-3">Calidad del Aire</h2>
+      <p><strong>Ubicación:</strong> <span id="location-name"></span></p>
+      <ul id="pollutant-list" class="list-unstyled"></ul>
+      <p><strong>Índice AQI:</strong> <span id="aqi-value"></span></p>
+      <div id="recommendation" class="alert mt-3" role="alert"></div>
+    </section>
+
+    <!-- Leyenda AQI -->
+    <section class="mt-4 p-3 bg-light border rounded">
+      <h2>Leyenda de Calidad del Aire (AQI)</h2>
+      <div class="table-responsive">
+        <table class="table table-bordered text-center align-middle">
+          <thead class="table-secondary">
+            <tr>
+              <th>Nivel</th>
+              <th>AQI</th>
+              <th>Descripción</th>
+              <th>Color</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Bueno</td>
+              <td>0 - 50</td>
+              <td>Calidad del aire satisfactoria</td>
+              <td style="background-color: #00e400;">&nbsp;</td>
+            </tr>
+            <tr>
+              <td>Moderado</td>
+              <td>51 - 100</td>
+              <td>Aceptable, puede afectar a sensibles</td>
+              <td style="background-color: #ffff00;">&nbsp;</td>
+            </tr>
+            <tr>
+              <td>No saludable para sensibles</td>
+              <td>101 - 150</td>
+              <td>Puede afectar a personas con enfermedades respiratorias</td>
+              <td style="background-color: #ff7e00;">&nbsp;</td>
+            </tr>
+            <tr>
+              <td>No saludable</td>
+              <td>151 - 200</td>
+              <td>Puede afectar a la población general</td>
+              <td style="background-color: #ff0000;">&nbsp;</td>
+            </tr>
+            <tr>
+              <td>Muy no saludable</td>
+              <td>201 - 300</td>
+              <td>Advertencias de salud para todos</td>
+              <td style="background-color: #8f3f97; color: white;">&nbsp;</td>
+            </tr>
+            <tr>
+              <td>Peligroso</td>
+              <td>301+</td>
+              <td>Emergencia sanitaria</td>
+              <td style="background-color: #7e0023; color: white;">&nbsp;</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="hu07.js"></script>
+</body>
+</html>
