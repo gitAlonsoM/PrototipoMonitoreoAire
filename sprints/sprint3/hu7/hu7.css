@@ -1,0 +1,17 @@
+body {
+    padding-top: 70px;
+    background-color: #f9f9f9;
+  }
+  
+  h1, h2 {
+    color: #2c3e50;
+  }
+  
+  .alert {
+    font-weight: bold;
+  }
+  
+  #pollutant-list li {
+    margin-bottom: 5px;
+  }
+  
