@@ -16,39 +16,23 @@
 </head>
 <body>
     
- <!-- Barra de navegación -->
- <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+  <!-- Barra de navegación -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">MonitoreoAire</a>
+      <a class="navbar-brand" href="../../../index.html">MonitoreoAire</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarContent">
         <ul class="navbar-nav me-auto">
-          <li class="nav-item">
-            <a class="nav-link " href="../../../index.html">Dashboard</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../../sprint3/hu8/hu8.html">Reportes</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../../sprint2/hu14/hu14.html">Historial</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../../sprint4/hu13/hu13.html">Alertas</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../../sprint2/hu12/hu12.html">Impacto Calidad del Aire</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../../sprint3/hu7/hu7.html">Seguridad del Aire</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link active" href="../../sprint5/hu9/hu9.html">Comparar 2 ciudades</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="../../sprint4/hu2/hu2.html">Notificaciones</a>
-        </li>
+          <li class="nav-item"><a class="nav-link" href="../../../index.html">Dashboard</a></li>
+          <li class="nav-item"><a class="nav-link" href="../../sprint3/hu8/hu8.html">Reportes</a></li>
+          <li class="nav-item"><a class="nav-link" href="../../sprint2/hu14/hu14.html">Historial</a></li>
+          <li class="nav-item"><a class="nav-link" href="../../sprint4/hu13/hu13.html">Alertas</a></li>
+          <li class="nav-item"><a class="nav-link" href="../../sprint2/hu12/hu12.html">Impacto Calidad del Aire</a></li>
+          <li class="nav-item"><a class="nav-link" href="../../sprint3/hu7/hu7.html">Seguridad del Aire</a></li>
+          <li class="nav-item"><a class="nav-link active" href="../../sprint5/hu9/hu9.html">Comparar 2 ciudades</a></li>
+          <li class="nav-item"><a class="nav-link" href="../../sprint4/hu2/hu2.html">Notificaciones</a></li>
         </ul>
         <ul class="navbar-nav ms-auto">
           <li class="nav-item"><a class="nav-link disabled" href="#">Iniciar Sesión</a></li>
@@ -82,17 +66,42 @@
 
     <!-- Spinner -->
     <div id="loading" class="text-center my-5" style="display:none">
-      <div class="spinner-border text-primary" role="status"><span class="visually-hidden">Cargando...</span></div>
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Cargando...</span>
+      </div>
     </div>
 
     <!-- Resultados -->
     <div id="resultados" style="display:none">
-      <!-- Gráfico -->
-      <div class="card mb-4">
-        <div class="card-body">
-          <canvas id="chartComparativo"></canvas>
+      <!-- Gráfico y Glosario lado a lado -->
+      <div class="row mb-4">
+        <!-- Gráfico comparativo -->
+        <div class="col-md-8">
+          <div class="card h-100 mb-0">
+            <div class="card-body">
+              <canvas id="chartComparativo"></canvas>
+            </div>
+          </div>
+        </div>
+        <!-- Tarjeta informativa -->
+        <div class="col-md-4">
+          <div class="card h-100 mb-0">
+            <div class="card-body">
+              <h5 class="card-title">Glosario Rápido</h5>
+              <ul class="list-unstyled mb-0">
+                <li><strong>PM2.5</strong>: Partículas ≤ 2.5 µm</li>
+                <li><strong>PM10</strong>: Partículas ≤ 10 µm</li>
+                <li><strong>NO₂</strong>: Dióxido de nitrógeno</li>
+                <li><strong>O₃</strong>: Ozono troposférico</li>
+                <li><strong>SO₂</strong>: Dióxido de azufre</li>
+                <li><strong>CO</strong>: Monóxido de carbono</li>
+                <li><strong>µg/m³</strong>: Microgramos por metro cúbico</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
+
       <!-- Análisis -->
       <div class="card mb-4">
         <div class="card-body">
@@ -100,6 +109,7 @@
           <ul id="analisisList" class="list-group list-group-flush"></ul>
         </div>
       </div>
+
       <!-- Botones de acción -->
       <div class="mb-5">
         <button id="btnPDF" class="btn btn-outline-secondary me-2">Descargar PDF</button>
