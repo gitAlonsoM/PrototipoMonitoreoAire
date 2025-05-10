@@ -7,7 +7,20 @@ document.addEventListener("DOMContentLoaded", () => {
   // Inicializar gráfico HU-3 (Informe Comparativo)
   try {
     const ctxHU3 = document.getElementById('chartHU3').getContext('2d');
+    const ctxHU15 = document.getElementById('chartHU15').getContext('2d');
     chartHU3 = new Chart(ctxHU3, {
+      type: 'line',
+      data: {
+        labels: [],
+        datasets: []
+      },
+      options: {
+        responsive: true,
+        plugins: { legend: { display: true } },
+        scales: { y: { beginAtZero: true } }
+      }
+    });
+    chartHU15 = new Chart(ctxHU15, {
       type: 'line',
       data: {
         labels: [],
@@ -30,6 +43,11 @@ document.addEventListener("DOMContentLoaded", () => {
   let opcionesHU3 = document.getElementById('contaminantesHU3').options;
   opcionesHU3[0].selected = true; // PM2.5
   opcionesHU3[2].selected = true; // NO₂
+  document.getElementById('fechaInicioHU15').value = "2025-04-01";
+  document.getElementById('fechaFinHU15').value = "2025-05-01";
+  let opcionesHU15 = document.getElementById('contaminantesHU15').options;
+  opcionesHU3[0].selected = true; // PM2.5
+  opcionesHU3[2].selected = true; // NO₂
 
   // Valores por defecto para región y comuna
   const region = document.getElementById('regionSelect').value;
@@ -38,9 +56,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Actualizar gráfico HU-3 al cargar
   actualizarChartHU3();
+  actualizarChartHU15();
 
   // Asignar listener al botón "Actualizar" de HU-3
   document.getElementById('updateHU3').addEventListener("click", actualizarChartHU3);
+  document.getElementById('updateHU15').addEventListener("click", actualizarChartHU15);
 
   // Botones decorativos HU-3 (exportación)
   document.getElementById('exportPDF').addEventListener("click", () => {
