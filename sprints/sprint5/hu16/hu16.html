@@ -1,0 +1,189 @@
+<!-- sprints/sprint5/hu16/hu16.html -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MonitoreoAire – Feedback Comunitario</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Estilos específicos -->
+  <link rel="stylesheet" href="hu16.css" />
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="../../index.html">MonitoreoAire</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarContent">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="../../../index.html">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../../sprint3/hu8/hu8.html">Reportes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../../sprint2/hu14/hu14.html">Historial</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../../sprint4/hu13/hu13.html">Alertas</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../../sprint2/hu12/hu12.html">Impacto Calidad del Aire</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../../sprint3/hu7/hu7.html">Seguridad del Aire</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../../sprint5/hu9/hu9.html">Comparar 2 ciudades</a>
+      </li>
+        <li class="nav-item">
+            <a class="nav-link" href="../../sprint4/hu2/hu2.html">Notificaciones</a>
+        </li>
+        
+        <li class="nav-item"><a class="nav-link active" href="hu16.html">Feedback Comunitario</a></li>
+
+        </ul>
+        <ul class="navbar-nav ms-auto">
+
+          <li class="nav-item"><a class="nav-link disabled" href="#">Iniciar Sesión</a></li>
+          <li class="nav-item"><a class="nav-link disabled" href="#">Registrarse</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Contenido principal -->
+  <div class="container mt-5 pt-4">
+    <h1 class="mb-4 text-center">Feedback Comunitario</h1>
+
+    <!-- Pestañas -->
+    <ul class="nav nav-tabs mb-3" id="feedbackTabs" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="sugerencias-tab" data-bs-toggle="tab" data-bs-target="#sugerencias" type="button" role="tab">Sugerencias</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="reportes-tab" data-bs-toggle="tab" data-bs-target="#reportes" type="button" role="tab">Reportes</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="comunidad-tab" data-bs-toggle="tab" data-bs-target="#comunidad" type="button" role="tab">Comunidad</button>
+      </li>
+    </ul>
+
+    <div class="tab-content" id="feedbackTabsContent">
+      <!-- Sugerencias -->
+      <div class="tab-pane fade show active" id="sugerencias" role="tabpanel">
+        <form id="form-sugerencia" class="mb-4">
+          <textarea class="form-control mb-2" id="input-sugerencia" rows="3" placeholder="Comparte tu idea para mejorar la web..."></textarea>
+          <button type="submit" class="btn btn-success">Publicar sugerencia</button>
+        </form>
+        <div id="feed-sugerencias">
+          <!-- Ejemplos inventados -->
+          <div class="card mb-3">
+            <div class="card-body">
+              <h6 class="card-subtitle mb-1 text-muted">María (Viña del Mar) – 12 mayo 2025</h6>
+              <p>Sería genial un modo nocturno para consultar los datos con luz baja.</p>
+              <button class="btn btn-outline-primary btn-sm me-2 like-btn">👍 <span>5</span></button>
+              <!-- Réplica anidada -->
+              <div class="ms-4 mt-3">
+                <div class="card bg-light p-2">
+                  <h6 class="card-subtitle mb-1 text-muted">Luis (Valparaíso) – 13 mayo 2025</h6>
+                  <p>¡Apoyo la idea! Un tema oscuro aliviaría la vista de noche.</p>
+                  <button class="btn btn-outline-primary btn-sm like-btn">👍 <span>3</span></button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card mb-3">
+            <div class="card-body">
+              <h6 class="card-subtitle mb-1 text-muted">Carla (Villa Alemana) – 11 mayo 2025</h6>
+              <p>Incluir una sección de tutorial rápido al ingresar por primera vez.</p>
+              <button class="btn btn-outline-primary btn-sm me-2 like-btn">👍 <span>2</span></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reportes -->
+      <div class="tab-pane fade" id="reportes" role="tabpanel">
+        <form id="form-reporte" class="mb-4">
+          <select class="form-select mb-2" id="categoria-reporte">
+            <option value="" disabled selected>Selecciona categoría</option>
+            <option>Datos erróneos</option>
+            <option>Sensores caídos</option>
+            <option>Otro</option>
+          </select>
+          <textarea class="form-control mb-2" id="input-reporte" rows="3" placeholder="Describe el problema o incidencia..."></textarea>
+          <button type="submit" class="btn btn-warning">Publicar reporte</button>
+        </form>
+        <div id="feed-reportes">
+          <!-- Ejemplos inventados -->
+          <div class="card mb-3 border-warning">
+            <div class="card-body">
+              <h6 class="card-subtitle mb-1 text-muted">Javier (Quilpué) – 10 mayo 2025</h6>
+              <span class="badge bg-warning mb-2">Sensores caídos</span>
+              <p>La estación de Quilpué no actualiza datos desde ayer.</p>
+              <button class="btn btn-outline-primary btn-sm like-btn">👍 <span>8</span></button>
+              <div class="ms-4 mt-3">
+                <div class="card bg-light p-2">
+                  <h6 class="card-subtitle mb-1 text-muted">Ana (Santiago) – 10 mayo 2025</h6>
+                  <p>Confirmado: acabo de revisar y sigue offline.</p>
+                  <button class="btn btn-outline-primary btn-sm like-btn">👍 <span>4</span></button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card mb-3 border-danger">
+            <div class="card-body">
+              <h6 class="card-subtitle mb-1 text-muted">Pedro (Viña del Mar) – 9 mayo 2025</h6>
+              <span class="badge bg-danger mb-2">Datos erróneos</span>
+              <p>Los valores de PM2.5 mostrados parecen demasiado bajos para la hora.</p>
+              <button class="btn btn-outline-primary btn-sm like-btn">👍 <span>6</span></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Comunidad -->
+      <div class="tab-pane fade" id="comunidad" role="tabpanel">
+        <form id="form-comunidad" class="mb-4">
+          <textarea class="form-control mb-2" id="input-comunidad" rows="3" placeholder="Comparte eventos o iniciativas..."></textarea>
+          <button type="submit" class="btn btn-info">Publicar</button>
+        </form>
+        <div id="feed-comunidad">
+          <!-- Ejemplos inventados -->
+          <div class="card mb-3 bg-light">
+            <div class="card-body">
+              <h6 class="card-subtitle mb-1 text-muted">Andrea (Santiago) – 8 mayo 2025</h6>
+              <p>Hoy a las 17h caminata de limpieza en el cerro San Cristóbal. Únete: #LimpiaCerroSC</p>
+              <button class="btn btn-outline-primary btn-sm like-btn">👍 <span>12</span></button>
+            </div>
+          </div>
+          <div class="card mb-3 bg-light">
+            <div class="card-body">
+              <h6 class="card-subtitle mb-1 text-muted">Tomás (Viña del Mar) – 7 mayo 2025</h6>
+              <p>Marcha ciudadana en Quilpué este sábado para exigir más estaciones de monitoreo.</p>
+              <button class="btn btn-outline-primary btn-sm like-btn">👍 <span>7</span></button>
+              <div class="ms-4 mt-3">
+                <div class="card bg-white p-2">
+                  <h6 class="card-subtitle mb-1 text-muted">Laura (Valparaíso) – 7 mayo 2025</h6>
+                  <p>¡Allí estaré! Es urgente ampliar cobertura.</p>
+                  <button class="btn btn-outline-primary btn-sm like-btn">👍 <span>5</span></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS y nuestro script -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="hu16.js"></script>
+</body>
+</html>
