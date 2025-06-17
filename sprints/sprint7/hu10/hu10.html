@@ -15,37 +15,7 @@
 </head>
 <body>
     <!-- Barra de navegación -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
-        <div class="container-fluid">
-            <a class="navbar-brand fw-bold" href="../../../index.html">MonitoreoAire</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link" href="../../../index.html">Dashboard</a></li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Análisis y Predicciones
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="../../sprint6/hu5/hu5.html">Proyecciones Futuras</a></li>
-                            <li><a class="dropdown-item active" aria-current="page" href="hu10.html">Configurar Escenarios</a></li>
-                            <li><a class="dropdown-item" href="../hu11/hu11.html">Generar Predicciones</a></li>
-                            <li><a class="dropdown-item" href="../../sprint5/hu9/hu9.html">Comparar Ciudades</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item"><a class="nav-link" href="../../sprint2/hu14/hu14.html">Historial</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../../sprint4/hu13/hu13.html">Alertas</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../../sprint5/hu16/hu16.html">Comunidad</a></li>
-                </ul>
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link disabled" href="#">Iniciar Sesión</a></li>
-                    <li class="nav-item"><a class="nav-link disabled" href="#">Registrarse</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <div id="navbar-placeholder"></div>
 
     <!-- Contenido principal -->
     <div class="container-fluid" style="padding-top: 80px;">
@@ -118,5 +88,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Lógica específica de la HU-10 -->
     <script src="hu10.js"></script>
+    <script src="../../../assets/js/nav-loader.js" data-path-to-root="../../../"></script>
 </body>
 </html>

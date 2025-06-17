@@ -1,0 +1,90 @@
+<!-- nav.html  -->
+<style>
+  /* Estilo para las etiquetas de HU en el menú */
+  .hu-label {
+    color: rgba(255, 255, 255, 0.6); /* Color grisáceo semi-transparente */
+    font-size: 0.8em;
+    font-weight: 400;
+    margin-left: 5px;
+  }
+  .dropdown-item .hu-label {
+    color: rgba(0, 0, 0, 0.4); /* Color más oscuro para el fondo blanco del dropdown */
+  }
+</style>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top shadow-sm">
+    <div class="container-fluid">
+        <a class="navbar-brand fw-bold" href="#" data-link-root="index.html">MonitoreoAire</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-link-root="index.html" data-hu="1">Dashboard <span class="hu-label">(HU-1)</span></a>
+                </li>
+
+                <!-- Dropdown: Análisis y Predicciones -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Análisis y Predicciones
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="sprints/sprint5/hu9/hu9.html" data-hu="9">Comparar Ciudades <span class="hu-label">(HU-9)</span></a></li>
+                        <li><a class="dropdown-item" href="sprints/sprint6/hu4/hu4.html" data-hu="4">Proyección Avanzada <span class="hu-label">(HU-4)</span></a></li>
+                        <li><a class="dropdown-item" href="sprints/sprint6/hu5/hu5.html" data-hu="5">Proyecciones por Políticas <span class="hu-label">(HU-5)</span></a></li>
+                        <li><a class="dropdown-item" href="sprints/sprint6/hu6/hu6.html" data-hu="6">Proyecciones por Emergencias <span class="hu-label">(HU-6)</span></a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="sprints/sprint7/hu10/hu10.html" data-hu="10">Configurar Escenarios <span class="hu-label">(HU-10)</span></a></li>
+                        <li><a class="dropdown-item" href="sprints/sprint7/hu11/hu11.html" data-hu="11">Generar Predicciones <span class="hu-label">(HU-11)</span></a></li>
+                    </ul>
+                </li>
+
+                <!-- Dropdown: Reportes y Datos Históricos -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Reportes y Datos
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="sprints/sprint3/hu8/hu8.html" data-hu="8">Generar Reportes <span class="hu-label">(HU-8)</span></a></li>
+                        <!-- Los siguientes 3 HUs están en la misma página (hu14.html) pero apuntan a diferentes pestañas -->
+                        <li><a class="dropdown-item" href="sprints/sprint2/hu14/hu14.html#hu3" data-hu="3">Informes Comparativos <span class="hu-label">(HU-3)</span></a></li>
+                        <li><a class="dropdown-item" href="sprints/sprint2/hu14/hu14.html#hu14" data-hu="14">Historial de Calidad <span class="hu-label">(HU-14)</span></a></li>
+                        <li><a class="dropdown-item" href="sprints/sprint2/hu14/hu14.html#hu15" data-hu="15">Datos para Investigadores <span class="hu-label">(HU-15)</span></a></li>
+                    </ul>
+                </li>
+
+                <!-- Dropdown: Alertas e Interacción -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Alertas e Interacción
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="sprints/sprint4/hu2/hu2.html" data-hu="2">Configurar Notificaciones <span class="hu-label">(HU-2)</span></a></li>
+                        <li><a class="dropdown-item" href="sprints/sprint4/hu13/hu13.html" data-hu="13">Alertas Críticas <span class="hu-label">(HU-13)</span></a></li>
+                        <li><a class="dropdown-item" href="sprints/sprint5/hu16/hu16.html" data-hu="16">Feedback Comunitario <span class="hu-label">(HU-16)</span></a></li>
+                    </ul>
+                </li>
+                
+                <!-- Dropdown: Información de Salud -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Salud y Seguridad
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="sprints/sprint2/hu12/hu12.html" data-hu="12">Impacto en la Salud <span class="hu-label">(HU-12)</span></a></li>
+                        <li><a class="dropdown-item" href="sprints/sprint3/hu7/hu7.html" data-hu="7">Seguridad al Aire Libre <span class="hu-label">(HU-7)</span></a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#">Iniciar Sesión</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link disabled" href="#">Registrarse</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
