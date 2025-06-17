@@ -1,11 +1,13 @@
 // assets/js/nav-loader.js (VERSIÓN FINAL CON AUTH)
+
+
 document.addEventListener("DOMContentLoaded", function() {
     const navLoaderScript = document.querySelector('script[src*="nav-loader.js"]');
     if (!navLoaderScript) return console.error("Script nav-loader.js no encontrado.");
     
     const pathToRoot = navLoaderScript.dataset.pathToRoot || './';
 
-    // Carga el HTML del menú y los modales
+    // Carga el HTML del menú y los modales de autenticación
     fetch(pathToRoot + 'nav.html')
         .then(response => {
             if (!response.ok) throw new Error('Error de red al cargar nav.html');
@@ -14,12 +16,23 @@ document.addEventListener("DOMContentLoaded", function() {
         .then(data => {
             const navbarPlaceholder = document.getElementById('navbar-placeholder');
             if (navbarPlaceholder) {
-                // Inyecta todo el HTML (nav + modals)
+                // Inyecta el HTML de la barra de navegación y sus modales
                 navbarPlaceholder.innerHTML = data;
                 
+                // *** INICIO DEL NUEVO CÓDIGO ***
+                // Después de cargar el nav, carga el modal del perfil y lo añade al body
+                fetch(pathToRoot + 'profile-modal.html')
+                    .then(res => res.ok ? res.text() : Promise.reject(`Error al cargar profile-modal.html`))
+                    .then(modalHtml => {
+                        // insertAdjacentHTML es más eficiente que innerHTML +=
+                        document.body.insertAdjacentHTML('beforeend', modalHtml);
+                    })
+                    .catch(error => console.error(error));
+                // *** FIN DEL NUEVO CÓDIGO ***
+
                 // Llama a las funciones de inicialización en orden
                 updateNavLinks(pathToRoot);
-                initializeAuth(); // <-- NUEVA FUNCIÓN DE AUTH
+                initializeAuth();
                 setActiveLink();
                 activateTabFromHash();
             }

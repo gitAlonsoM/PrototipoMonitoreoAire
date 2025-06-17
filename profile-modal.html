@@ -1,0 +1,108 @@
+<!-- profile-modal.html -->
+<!-- Este archivo contiene solo el modal del perfil de usuario. -->
+<!-- Se cargará dinámicamente en todas las páginas a través de nav-loader.js -->
+
+<div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title" id="profileModalLabel"><i class="fas fa-user-circle me-2"></i>Perfil de Usuario</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body p-0">
+        <!-- Pestañas de Navegación -->
+        <ul class="nav nav-tabs nav-fill" id="profileTab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="profile-details-tab" data-bs-toggle="tab" data-bs-target="#profile-details" type="button" role="tab" aria-controls="profile-details" aria-selected="true">
+              <i class="fas fa-id-card me-1"></i> Mis Datos
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="notifications-tab" data-bs-toggle="tab" data-bs-target="#notifications" type="button" role="tab" aria-controls="notifications" aria-selected="false">
+              <i class="fas fa-bell me-1"></i> Notificaciones <span class="badge rounded-pill bg-danger">3</span>
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="activity-tab" data-bs-toggle="tab" data-bs-target="#activity" type="button" role="tab" aria-controls="activity" aria-selected="false">
+              <i class="fas fa-history me-1"></i> Movimientos
+            </button>
+          </li>
+        </ul>
+
+        <!-- Contenido de las Pestañas -->
+        <div class="tab-content p-4" id="profileTabContent">
+
+          <!-- 1. Pestaña: Mis Datos -->
+          <div class="tab-pane fade show active" id="profile-details" role="tabpanel" aria-labelledby="profile-details-tab">
+            <h6 class="mb-3">Información de la Cuenta (Simulado)</h6>
+            <form>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label class="form-label">Nombre Completo</label>
+                  <input type="text" class="form-control" value="Usuario Demo" readonly>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Correo Electrónico</label>
+                  <input type="email" class="form-control" value="usuario@demo.com" readonly>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Ciudad Predeterminada</label>
+                  <input type="text" class="form-control" value="Santiago" readonly>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label">Miembro desde</label>
+                  <input type="text" class="form-control" value="15 de Abril, 2024" readonly>
+                </div>
+              </div>
+              <hr>
+              <button type="button" class="btn btn-outline-primary" disabled><i class="fas fa-edit me-2"></i>Editar Perfil (No funcional)</button>
+            </form>
+          </div>
+
+          <!-- 2. Pestaña: Notificaciones -->
+          <div class="tab-pane fade" id="notifications" role="tabpanel" aria-labelledby="notifications-tab">
+            <h6 class="mb-3">Alertas y Avisos Recientes</h6>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto">
+                  <div class="fw-bold text-danger"><i class="fas fa-exclamation-triangle me-2"></i>Alerta de Contaminación Crítica (HU-13)</div>
+                  Niveles de PM2.5 superaron el umbral de 150 µg/m³ en tu zona.
+                </div>
+                <span class="badge bg-secondary rounded-pill">Hace 15 min</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto">
+                  <div class="fw-bold text-warning"><i class="fas fa-smog me-2"></i>Notificación de Umbral Personalizado (HU-2)</div>
+                  El nivel de O₃ superó el umbral que configuraste (80 ppb).
+                </div>
+                <span class="badge bg-secondary rounded-pill">Hace 2 horas</span>
+              </li>
+               <li class="list-group-item d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto">
+                  <div class="fw-bold text-info"><i class="fas fa-comments me-2"></i>Nuevo comentario en Feedback (HU-16)</div>
+                  Alguien respondió a tu reporte sobre "Tráfico denso en Providencia".
+                </div>
+                <span class="badge bg-secondary rounded-pill">Ayer</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- 3. Pestaña: Movimientos (Registro de Actividad) -->
+          <div class="tab-pane fade" id="activity" role="tabpanel" aria-labelledby="activity-tab">
+             <h6 class="mb-3">Tu Actividad Reciente en la Plataforma</h6>
+             <ul class="list-group list-group-flush">
+               <li class="list-group-item"><i class="fas fa-chart-line text-primary me-2"></i>Generaste una **proyección avanzada** para Santiago. <span class="text-muted small">(HU-4)</span></li>
+               <li class="list-group-item"><i class="fas fa-exchange-alt text-primary me-2"></i>Comparaste la calidad del aire entre **Santiago y Valparaíso**. <span class="text-muted small">(HU-9)</span></li>
+               <li class="list-group-item"><i class="fas fa-file-pdf text-primary me-2"></i>Exportaste un **reporte detallado** de la última semana. <span class="text-muted small">(HU-8)</span></li>
+               <li class="list-group-item"><i class="fas fa-cog text-primary me-2"></i>Configuraste un **escenario personalizado** con menos tráfico. <span class="text-muted small">(HU-10)</span></li>
+               <li class="list-group-item"><i class="fas fa-user-shield text-primary me-2"></i>Consultaste las recomendaciones de **seguridad al aire libre**. <span class="text-muted small">(HU-7)</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
