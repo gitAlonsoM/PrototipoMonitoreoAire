@@ -1,0 +1,30 @@
+/* sprints\sprint7\hu11\hu11.css */
+body {
+    background-color: #f8f9fa;
+}
+
+#scenarios-selection-list .form-check {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.card-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+    font-weight: 600;
+}
+
+#real-time-controls .scenario-control-group {
+    border: 1px solid #e9ecef;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+#real-time-controls .scenario-control-group:last-child {
+    margin-bottom: 0;
+}
+
+#real-time-controls .form-label {
+    font-size: 0.9rem;
+}
