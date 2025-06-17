@@ -1,17 +1,11 @@
-<!-- nav.html  -->
+<!-- nav.html (VERSIÓN CON AUTH) -->
 <style>
   /* Estilo para las etiquetas de HU en el menú */
-  .hu-label {
-    color: rgba(255, 255, 255, 0.6); /* Color grisáceo semi-transparente */
-    font-size: 0.8em;
-    font-weight: 400;
-    margin-left: 5px;
-  }
-  .dropdown-item .hu-label {
-    color: rgba(0, 0, 0, 0.4); /* Color más oscuro para el fondo blanco del dropdown */
-  }
+  .hu-label { color: rgba(255, 255, 255, 0.6); font-size: 0.8em; font-weight: 400; margin-left: 5px; }
+  .dropdown-item .hu-label { color: rgba(0, 0, 0, 0.4); }
 </style>
 
+<!-- 1. BARRA DE NAVEGACIÓN -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top shadow-sm">
     <div class="container-fluid">
         <a class="navbar-brand fw-bold" href="#" data-link-root="index.html">MonitoreoAire</a>
@@ -19,12 +13,12 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarContent">
+            <!-- Menú Principal (sin cambios) -->
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                     <a class="nav-link" href="#" data-link-root="index.html" data-hu="1">Dashboard <span class="hu-label">(HU-1)</span></a>
                 </li>
-
-                <!-- Dropdown: Análisis y Predicciones -->
+                <!-- ... tus otros dropdowns ... -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Análisis y Predicciones
@@ -39,22 +33,17 @@
                         <li><a class="dropdown-item" href="sprints/sprint7/hu11/hu11.html" data-hu="11">Generar Predicciones <span class="hu-label">(HU-11)</span></a></li>
                     </ul>
                 </li>
-
-                <!-- Dropdown: Reportes y Datos Históricos -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Reportes y Datos
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="sprints/sprint3/hu8/hu8.html" data-hu="8">Generar Reportes <span class="hu-label">(HU-8)</span></a></li>
-                        <!-- Los siguientes 3 HUs están en la misma página (hu14.html) pero apuntan a diferentes pestañas -->
                         <li><a class="dropdown-item" href="sprints/sprint2/hu14/hu14.html#hu3" data-hu="3">Informes Comparativos <span class="hu-label">(HU-3)</span></a></li>
                         <li><a class="dropdown-item" href="sprints/sprint2/hu14/hu14.html#hu14" data-hu="14">Historial de Calidad <span class="hu-label">(HU-14)</span></a></li>
                         <li><a class="dropdown-item" href="sprints/sprint2/hu14/hu14.html#hu15" data-hu="15">Datos para Investigadores <span class="hu-label">(HU-15)</span></a></li>
                     </ul>
                 </li>
-
-                <!-- Dropdown: Alertas e Interacción -->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Alertas e Interacción
@@ -65,9 +54,7 @@
                         <li><a class="dropdown-item" href="sprints/sprint5/hu16/hu16.html" data-hu="16">Feedback Comunitario <span class="hu-label">(HU-16)</span></a></li>
                     </ul>
                 </li>
-                
-                <!-- Dropdown: Información de Salud -->
-                <li class="nav-item dropdown">
+                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Salud y Seguridad
                     </a>
@@ -77,14 +64,85 @@
                     </ul>
                 </li>
             </ul>
-            <ul class="navbar-nav ms-auto">
+
+            <!-- Menú de Usuario Dinámico -->
+            <ul id="user-menu-logged-out" class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Iniciar Sesión</a>
+                    <button class="btn btn-outline-light me-2" data-bs-toggle="modal" data-bs-target="#loginModal">Iniciar Sesión</button>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled" href="#">Registrarse</a>
+                    <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#registerModal">Registrarse</button>
+                </li>
+            </ul>
+
+            <ul id="user-menu-logged-in" class="navbar-nav ms-auto" style="display: none;">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownUser" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span id="username-display"></span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownUser">
+                        <li><a class="dropdown-item" href="#">Mi Perfil</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#" id="logout-btn">Cerrar Sesión</a></li>
+                    </ul>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
+
+<!-- 2. MODALES (SE CARGARÁN EN TODAS LAS PÁGINAS PERO ESTARÁN OCULTOS) -->
+
+<!-- Modal de Iniciar Sesión -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="loginModalLabel">Iniciar Sesión</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="login-form">
+          <div class="mb-3">
+            <label for="login-email" class="form-label">Correo Electrónico</label>
+            <input type="email" class="form-control" id="login-email" required value="usuario@demo.com">
+          </div>
+          <div class="mb-3">
+            <label for="login-password" class="form-label">Contraseña</label>
+            <input type="password" class="form-control" id="login-password" required value="123456">
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Iniciar Sesión</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal de Registro -->
+<div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="registerModalLabel">Crear una Cuenta</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="register-form">
+          <div class="mb-3">
+            <label for="register-name" class="form-label">Nombre Completo</label>
+            <input type="text" class="form-control" id="register-name" required>
+          </div>
+          <div class="mb-3">
+            <label for="register-email" class="form-label">Correo Electrónico</label>
+            <input type="email" class="form-control" id="register-email" required>
+          </div>
+          <div class="mb-3">
+            <label for="register-password" class="form-label">Contraseña</label>
+            <input type="password" class="form-control" id="register-password" required>
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Crear Cuenta</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
