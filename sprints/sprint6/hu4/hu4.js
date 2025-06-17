@@ -1,82 +1,111 @@
-// sprints/sprint6/hu4/hu4.js
-// hu4.js
+document.getElementById("projection-form").addEventListener("submit", function (e) {
+  e.preventDefault();
 
-document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("projection-form");
-  const chartCanvas = document.getElementById("projection-chart").getContext("2d");
-  const explanation = document.getElementById("projection-explanation");
-  let chartInstance;
+  const emisiones = parseFloat(document.getElementById("emisiones").value);
+  const temperatura = parseFloat(document.getElementById("temperatura").value);
+  const humedad = parseFloat(document.getElementById("humedad").value);
+  const periodo = parseInt(document.getElementById("periodo").value);
 
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
+  // Simulación de valores proyectados
+  const labels = [];
+  const data = [];
+  for (let i = 0; i < periodo; i++) {
+    labels.push(`Semana ${i + 1}`);
+    const valor =
+      emisiones * 0.6 +
+      temperatura * 0.3 -
+      humedad * 0.2 +
+      Math.random() * 5;
+    data.push(Math.round(valor * 100) / 100);
+  }
 
-    // Valores de entrada simulados
-    const emissions = parseFloat(document.getElementById("emissions").value);
-    const temperature = parseFloat(document.getElementById("temperature").value);
-    const humidity = parseFloat(document.getElementById("humidity").value);
-    const model = document.getElementById("model").value;
-    const period = document.getElementById("period").value;
+  // Mostrar sección de resultados
+  document.getElementById("projection-result").classList.remove("d-none");
 
-    // Generar datos ficticios para la proyección
-    const labels = generateDateLabels(period);
-    const data = labels.map((_, i) =>
-      simulateAQI(emissions, temperature, humidity, i)
-    );
-
-    // Mostrar proyección con Chart.js
-    if (chartInstance) chartInstance.destroy();
-    chartInstance = new Chart(chartCanvas, {
-      type: "line",
-      data: {
-        labels: labels,
-        datasets: [{
-          label: "Proyección AQI",
+  // Crear gráfico de líneas
+  const ctx = document.getElementById("chartProjection").getContext("2d");
+  if (window.chartInstance) {
+    window.chartInstance.destroy();
+  }
+  window.chartInstance = new Chart(ctx, {
+    type: "line",
+    data: {
+      labels: labels,
+      datasets: [
+        {
+          label: "Índice proyectado de calidad del aire (AQI)",
           data: data,
-          borderColor: "#0d6efd",
-          fill: false
-        }]
+          borderColor: "rgba(40, 116, 166, 1)",
+          backgroundColor: "rgba(40, 116, 166, 0.2)",
+          tension: 0.3,
+          fill: true,
+          pointBackgroundColor: "#fff",
+          pointRadius: 5,
+          pointHoverRadius: 7
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          display: true,
+          labels: {
+            color: "#000",
+            font: {
+              size: 14,
+              weight: "bold"
+            }
+          }
+        },
+        tooltip: {
+          mode: "index",
+          intersect: false,
+          backgroundColor: "#e3f2fd",
+          titleColor: "#0d47a1",
+          bodyColor: "#0d47a1"
+        }
       },
-      options: {
-        responsive: true,
-        scales: {
-          y: {
-            beginAtZero: true,
-            title: { display: true, text: 'AQI' }
-          },
-          x: {
-            title: { display: true, text: 'Fecha' }
+      scales: {
+        y: {
+          beginAtZero: true,
+          title: {
+            display: true,
+            text: "AQI estimado",
+            color: "#000",
+            font: {
+              size: 13
+            }
+          }
+        },
+        x: {
+          title: {
+            display: true,
+            text: "Tiempo (semanas)",
+            color: "#000",
+            font: {
+              size: 13
+            }
           }
         }
       }
-    });
-
-    // Explicación simulada
-    explanation.classList.remove("d-none");
-    explanation.innerHTML = `
-      <strong>Modelo:</strong> ${model}<br>
-      <strong>Variables clave:</strong> Emisiones = ${emissions}, Temp = ${temperature}°C, Humedad = ${humidity}%<br>
-      <strong>Margen de error estimado:</strong> ±12 AQI
-    `;
+    }
   });
 
-  function generateDateLabels(period) {
-    const labels = [];
-    const today = new Date();
-    const steps = period === "1w" ? 7 : period === "1y" ? 12 : 36;
+  // Mostrar explicación
+  const explicacion = `
+    <strong>Modelo utilizado:</strong> Simulación basada en regresión lineal simple.<br>
+    <strong>Variables clave:</strong> emisiones, temperatura, humedad.<br>
+    <strong>Margen de error estimado:</strong> ±10%.<br>
+    <strong>Interpretación:</strong> Valores altos del índice indican peor calidad del aire.`;
+  document.getElementById("explanation").innerHTML = explicacion;
+});
 
-    for (let i = 0; i < steps; i++) {
-      const future = new Date(today);
-      if (period === "1w") future.setDate(today.getDate() + i);
-      else future.setMonth(today.getMonth() + i);
-      labels.push(future.toISOString().slice(0, 10));
-    }
+// Botones de exportación
+document.getElementById("btnExportPDF").addEventListener("click", () => {
+  alert("Funcionalidad de exportación a PDF aún no implementada.");
+});
 
-    return labels;
-  }
-
-  function simulateAQI(emissions, temp, hum, index) {
-    const base = 50 + emissions * 3 + temp * 0.5 - hum * 0.2;
-    const variation = Math.sin(index / 2) * 10;
-    return Math.round(base + variation);
-  }
+document.getElementById("btnExportExcel").addEventListener("click", () => {
+  alert("Funcionalidad de exportación a Excel aún no implementada.");
 });
