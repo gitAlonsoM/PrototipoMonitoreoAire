@@ -1,111 +1,58 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Monitoreo de la Calidad del Aire - Dashboard</title>
-  <!-- Bootstrap CSS (CDN) -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap y Font Awesome -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
   <!-- Estilos globales -->
   <link rel="stylesheet" href="assets/css/main.css">
 
   <style>
-    body {
-      padding-top: 70px; /* Deja espacio para la navbar fija */
-    }
-    .navbar-brand {
-      font-weight: 600;
-    }
-    /* Columna izquierda (sidebar/panel) */
-    .left-panel {
-      background-color: #ffffff;
-      border-right: 1px solid #e0e0e0;
-      box-shadow: 0 0 10px rgba(0,0,0,0.05);
-      min-height: 100vh;
-      padding: 20px;
-    }
-    /* Columna derecha (contenido principal) */
-    .main-content {
-      padding: 20px;
-      background-color: #f8f9fa;
-      min-height: 100vh;
-    }
-    .section-title {
-      margin-top: 20px;
-      margin-bottom: 15px;
-      font-weight: 600;
-    }
+    body { padding-top: 70px; }
+    .navbar-brand { font-weight: 600; }
+    .left-panel { background-color: #ffffff; border-right: 1px solid #e0e0e0; box-shadow: 0 0 10px rgba(0,0,0,0.05); min-height: 100vh; padding: 20px; }
+    .main-content { padding: 20px; background-color: #f8f9fa; min-height: 100vh; }
+    
+    /* Estilos específicos para el Plan de Mejora */
+    .plan-card-header { font-weight: 600; }
+    #plan-comparison-chart-container { position: relative; height: 350px; }
   </style>
 </head>
 <body>
-  <!-- Barra de navegación superior -->
-  
+  <!-- El menú se cargará aquí dinámicamente -->
   <div id="navbar-placeholder"></div>
 
   <!-- Contenedor principal -->
   <div class="container-fluid">
     <div class="row">
-      <!-- Columna IZQUIERDA: Aquí colocamos directamente el contenido HU-1 -->
-      <div class="col-md-3 left-panel">
+      <!-- Columna IZQUIERDA: Panel en Tiempo Real (HU-1) -->
+      <div class="col-lg-3 left-panel">
         <h5 class="mb-3">Panel en Tiempo Real (HU‑1)</h5>
-
-        <!-- Aquí incrustamos el contenido del panel HU-1 -->
-        <!-- Opción A: Copiar/pegar el HTML del HU‑1 directamente -->
-        <!-- Opción B: Incluirlo con un <object> o <iframe>, pero ya no en la sección principal -->
-
-        <!-- Opción A: Copiar/pegar HU-1 -->
+        <!-- ... (código existente del panel izquierdo de filtros y AQI) ... -->
         <div id="hu1-panel-container">
-          <!-- El "cuerpo" del HU-1 se va a renderizar dinámicamente desde un archivo JS externo 
-               o con el script inline. -->
           <div class="card shadow-sm mb-3">
             <div class="card-body">
               <h6 class="card-title">Indicadores de Calidad del Aire</h6>
-              <div id="hu1-panel">
-                <!-- Aquí se rellenarán los contaminantes -->
-              </div>
+              <div id="hu1-panel"><!-- Se rellena con JS --></div>
               <button class="btn btn-outline-secondary btn-sm mt-3 w-100" id="export-pdf">Exportar a PDF</button>
             </div>
           </div>
-
-          <!-- Filtros de ubicación (opcional) -->
           <div class="card shadow-sm">
             <div class="card-body">
               <h6 class="card-title">Filtrar por Ubicación</h6>
               <form id="filter-form">
-                <div class="mb-2">
-                  <label for="region" class="form-label">Región</label>
-                  <select class="form-select" id="region">
-                    <option>Seleccionar Región</option>
-                    <option>Región 1</option>
-                    <option>Región 2</option>
-                    <option>Región 3</option>
-                  </select>
-                </div>
-                <div class="mb-2">
-                  <label for="comuna" class="form-label">Comuna</label>
-                  <select class="form-select" id="comuna">
-                    <option>Seleccionar Comuna</option>
-                    <option>Comuna A</option>
-                    <option>Comuna B</option>
-                    <option>Comuna C</option>
-                  </select>
-                </div>
-                <div class="mb-2">
-                  <label for="estacion" class="form-label">Estación</label>
-                  <select class="form-select" id="estacion">
-                    <option>Seleccionar Estación</option>
-                    <option>Estación 1</option>
-                    <option>Estación 2</option>
-                    <option>Estación 3</option>
-                  </select>
-                </div>
+                <div class="mb-2"><label for="region" class="form-label">Región</label><select class="form-select" id="region"><option>Seleccionar Región</option></select></div>
+                <div class="mb-2"><label for="comuna" class="form-label">Comuna</label><select class="form-select" id="comuna"><option>Seleccionar Comuna</option></select></div>
+                <div class="mb-2"><label for="estacion" class="form-label">Estación</label><select class="form-select" id="estacion"><option>Seleccionar Estación</option></select></div>
                 <button type="submit" class="btn btn-primary btn-sm mt-2 w-100">Filtrar</button>
               </form>
             </div>
           </div>
-
-          <!-- Leyenda de AQI -->
           <div class="card shadow-sm mt-4">
             <div class="card-body">
               <h6 class="card-title mb-2">Leyenda AQI</h6>
@@ -118,26 +65,98 @@
             </div>
           </div>
         </div>
-        <!-- Fin de Panel HU-1 -->
       </div>
 
-      <!-- Columna DERECHA: Contenido principal, gráficas, etc. -->
-      <div class="col-md-9 main-content">
-        <h2 class="section-title">Sección Central</h2>
-        <div class="alert alert-info">
-          Aquí podrías mostrar gráficas, estadísticas detalladas u otras vistas relacionadas con la ubicación seleccionada.
+      <!-- Columna DERECHA: "Mi Plan de Mejora" -->
+      <div class="col-lg-9 main-content">
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-2 pb-2 mb-3 border-bottom">
+            <h1 class="h2">Mi Plan de Mejora del Aire</h1>
+        </div>
+
+        <div class="row g-4">
+            <!-- Sub-columna 1: Definir Metas -->
+            <div class="col-xl-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-header bg-success text-white plan-card-header">
+                        <h5 class="mb-0"><i class="fas fa-bullseye me-2"></i>Define tus Metas</h5>
+                    </div>
+                    <div class="card-body">
+                        <form id="goals-form">
+                            <div class="mb-3">
+                                <label for="plan-location-select" class="form-label">Tu Ubicación (Simulada)</label>
+                                <select id="plan-location-select" class="form-select">
+                                    <option value="Santiago">Santiago</option>
+                                    <option value="Valparaíso">Valparaíso</option>
+                                    <option value="Concepción">Concepción</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="goal-pm25" class="form-label">Meta de PM2.5 (µg/m³)</label>
+                                <input type="number" class="form-control" id="goal-pm25" placeholder="Ej: 20" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="goal-no2" class="form-label">Meta de NO₂ (ppb)</label>
+                                <input type="number" class="form-control" id="goal-no2" placeholder="Ej: 15" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="goal-o3" class="form-label">Meta de O₃ (ppb)</label>
+                                <input type="number" class="form-control" id="goal-o3" placeholder="Ej: 40" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">
+                                <i class="fas fa-chart-bar me-2"></i>Comparar Actual vs. Deseada
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sub-columna 2: Visualización y Recomendaciones -->
+            <div class="col-xl-8">
+                <!-- Mensaje de bienvenida inicial -->
+                <div id="plan-welcome-message" class="alert alert-info text-center p-5 h-100 d-flex flex-column justify-content-center">
+                    <h4>¡Comienza tu Plan de Mejora!</h4>
+                    <p class="lead mb-0">Define tus metas de calidad del aire a la izquierda para ver una comparación instantánea y obtener recomendaciones.</p>
+                </div>
+
+                <!-- Contenedor de resultados (inicialmente oculto) -->
+                <div id="plan-results-container" class="d-none">
+                    <div class="card shadow-sm mb-4">
+                         <div class="card-header plan-card-header">
+                            <h5 class="mb-0"><i class="fas fa-exchange-alt me-2"></i>Visualiza la Brecha</h5>
+                        </div>
+                        <div class="card-body">
+                            <div id="plan-comparison-chart-container">
+                               <canvas id="plan-comparison-chart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card shadow-sm">
+                        <div class="card-header plan-card-header">
+                           <h5 class="mb-0"><i class="fas fa-lightbulb me-2"></i>Cierra la Brecha: Recomendaciones</h5>
+                        </div>
+                        <div class="card-body">
+                           <p>Para alcanzar tus metas, considera las siguientes acciones:</p>
+                           <ul id="plan-recommendations-list" class="list-group list-group-flush">
+                               <!-- Recomendaciones se generan aquí -->
+                           </ul>
+                           <a href="sprints/sprint7/hu10/hu10.html" class="btn btn-success mt-3">
+                                <i class="fas fa-cogs me-2"></i>Simular Escenarios para Planificar
+                           </a>
+                        </div>
+                   </div>
+                </div>
+            </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Bootstrap JS (CDN) -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- Script HU-1 -->
-  <script src="sprints/sprint2/hu1/hu1.js"></script>
-
-  <!-- Carga dinámica de la barra de navegación -->
-<script src="assets/js/nav-loader.js" data-path-to-root="./"></script>
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/nav-loader.js" data-path-to-root="./"></script>
+  <script src="sprints/sprint2/hu1/hu1.js"></script> <!-- Script para el panel izquierdo -->
+  <script src="assets/js/plan-mejora.js"></script> <!-- NUEVO script para el panel derecho -->
 
 </body>
 </html>
